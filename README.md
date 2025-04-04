@@ -25,8 +25,8 @@ Open `index.html` in your browser.
 ## 🗂️ Weekly Breakdown & Questions
 
 ### 📘 Week 1: Numerical & Arrays
-- [ ] Day 1 - Problem 1: Sum of First N Natural Numbers (Easy)
-- [ ] Day 1 - Problem 2: Reverse a Number (Easy)
+- [X] Day 1 - Problem 1: Sum of First N Natural Numbers (Easy)
+- [X] Day 1 - Problem 2: Reverse a Number (Easy)
 - [ ] Day 2 - Problem 3: GCD of Two Numbers (Easy)
 - [ ] Day 2 - Problem 4: Check Prime Number (Easy)
 - [ ] Day 3 - Problem 5: Fibonacci Series (Easy)
