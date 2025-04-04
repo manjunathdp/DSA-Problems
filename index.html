@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Interview Prep Tracker</title>
+    <style>
+        :root {
+            --bg-light: #f4f4f4;
+            --bg-dark: #1e1e1e;
+            --text-light: #000;
+            --text-dark: #fff;
+            --card-light: #fff;
+            --card-dark: #333;
+            --accent-light: #4caf50;
+            --accent-dark: #66ff99;
+            --progress-light: #ddd;
+            --progress-dark: #555;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+        .dark-mode {
+            --bg-light: var(--bg-dark);
+            --text-light: var(--text-dark);
+            --card-light: var(--card-dark);
+            --accent-light: var(--accent-dark);
+            --progress-light: var(--progress-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: var(--card-light);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        h1, h3 {
+            text-align: center;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: var(--accent-light);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #3e8e41;
+        }
+        .section {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: var(--card-light);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--progress-light);
+            border-radius: 5px;
+            margin: 10px 0;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-light);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: var(--accent-light);
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>LeetCode 10-Week Interview Prep Tracker</h1>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <h3>Overall Progress</h3>
+        <div class="progress-bar"><div class="progress-fill" id="overall-progress"></div></div>
+
+        <div id="sections"></div>
+    </div>
+
+    <script>
+const weeks = [
+    { name: "Week 1: Numerical & Arrays", problems: [
+        ["Day 1", "1", "Sum of First N Natural Numbers", "Easy", "https://www.geeksforgeeks.org/program-find-sum-first-n-natural-numbers/"],
+        ["Day 1", "2", "Reverse a Number", "Easy", "https://www.geeksforgeeks.org/reverse-digits-number/"],
+        ["Day 2", "3", "GCD of Two Numbers", "Easy", "https://www.geeksforgeeks.org/c-program-find-gcd-hcf-two-numbers/"],
+        ["Day 2", "4", "Check Prime Number", "Easy", "https://www.geeksforgeeks.org/c-program-to-check-prime-number/"],
+        ["Day 3", "5", "Fibonacci Series", "Easy", "https://www.geeksforgeeks.org/program-for-fibonacci-numbers/"],
+        ["Day 3", "6", "Factorial of a Number", "Easy", "https://www.geeksforgeeks.org/factorial-large-number/"],
+        ["Day 4", "7", "Armstrong Number", "Easy", "https://www.geeksforgeeks.org/program-for-armstrong-numbers/"],
+        ["Day 4", "8", "Palindrome Number", "Easy", "https://www.geeksforgeeks.org/check-if-a-number-is-palindrome/"]
+    ]},
+
+    { name: "Week 2: Arrays & Hashing", problems: [
+        ["Day 5", "9", "Two Sum", "Easy", "https://leetcode.com/problems/two-sum/"],
+        ["Day 5", "10", "Contains Duplicate", "Easy", "https://leetcode.com/problems/contains-duplicate/"],
+        ["Day 6", "11", "Valid Anagram", "Easy", "https://leetcode.com/problems/valid-anagram/"],
+        ["Day 6", "12", "Group Anagrams", "Medium", "https://leetcode.com/problems/group-anagrams/"],
+        ["Day 7", "13", "Top K Frequent Elements", "Medium", "https://leetcode.com/problems/top-k-frequent-elements/"],
+        ["Day 7", "14", "Product of Array Except Self", "Medium", "https://leetcode.com/problems/product-of-array-except-self/"],
+        ["Day 8", "15", "Longest Consecutive Sequence", "Hard", "https://leetcode.com/problems/longest-consecutive-sequence/"]
+    ]},
+
+    { name: "Week 3: Two Pointers", problems: [
+        ["Day 9", "16", "Valid Palindrome", "Easy", "https://leetcode.com/problems/valid-palindrome/"],
+        ["Day 9", "17", "Two Sum II", "Easy", "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"],
+        ["Day 10", "18", "3Sum", "Medium", "https://leetcode.com/problems/3sum/"],
+        ["Day 10", "19", "Container With Most Water", "Medium", "https://leetcode.com/problems/container-with-most-water/"],
+        ["Day 11", "20", "Trapping Rain Water", "Hard", "https://leetcode.com/problems/trapping-rain-water/"],
+        ["Day 11", "21", "Remove Duplicates from Sorted Array", "Easy", "https://leetcode.com/problems/remove-duplicates-from-sorted-array/"],
+        ["Day 12", "22", "Move Zeroes", "Easy", "https://leetcode.com/problems/move-zeroes/"]
+    ]},
+
+    { name: "Week 4: Sliding Window", problems: [
+        ["Day 13", "23", "Best Time to Buy and Sell Stock", "Easy", "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"],
+        ["Day 13", "24", "Longest Substring Without Repeating Characters", "Medium", "https://leetcode.com/problems/longest-substring-without-repeating-characters/"],
+        ["Day 14", "25", "Permutation in String", "Medium", "https://leetcode.com/problems/permutation-in-string/"],
+        ["Day 14", "26", "Minimum Window Substring", "Hard", "https://leetcode.com/problems/minimum-window-substring/"],
+        ["Day 15", "27", "Sliding Window Maximum", "Hard", "https://leetcode.com/problems/sliding-window-maximum/"],
+        ["Day 15", "28", "Longest Repeating Character Replacement", "Medium", "https://leetcode.com/problems/longest-repeating-character-replacement/"],
+        ["Day 16", "29", "Subarray Sum Equals K", "Medium", "https://leetcode.com/problems/subarray-sum-equals-k/"]
+    ]},
+
+    { name: "Week 5: Stack & Monotonic Stack", problems: [
+        ["Day 17", "30", "Valid Parentheses", "Easy", "https://leetcode.com/problems/valid-parentheses/"],
+        ["Day 17", "31", "Min Stack", "Easy", "https://leetcode.com/problems/min-stack/"],
+        ["Day 18", "32", "Evaluate Reverse Polish Notation", "Medium", "https://leetcode.com/problems/evaluate-reverse-polish-notation/"],
+        ["Day 18", "33", "Daily Temperatures", "Medium", "https://leetcode.com/problems/daily-temperatures/"],
+        ["Day 19", "34", "Car Fleet", "Medium", "https://leetcode.com/problems/car-fleet/"],
+        ["Day 19", "35", "Largest Rectangle in Histogram", "Hard", "https://leetcode.com/problems/largest-rectangle-in-histogram/"],
+        ["Day 20", "36", "Maximal Rectangle", "Hard", "https://leetcode.com/problems/maximal-rectangle/"]
+    ]},
+
+    { name: "Week 6: Binary Search", problems: [
+        ["Day 21", "37", "Binary Search", "Easy", "https://leetcode.com/problems/binary-search/"],
+        ["Day 21", "38", "Search a 2D Matrix", "Medium", "https://leetcode.com/problems/search-a-2d-matrix/"],
+        ["Day 22", "39", "Find Minimum in Rotated Sorted Array", "Medium", "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"],
+        ["Day 22", "40", "Search in Rotated Sorted Array", "Medium", "https://leetcode.com/problems/search-in-rotated-sorted-array/"],
+        ["Day 23", "41", "Median of Two Sorted Arrays", "Hard", "https://leetcode.com/problems/median-of-two-sorted-arrays/"],
+        ["Day 23", "42", "Koko Eating Bananas", "Medium", "https://leetcode.com/problems/koko-eating-bananas/"],
+        ["Day 24", "43", "Split Array Largest Sum", "Hard", "https://leetcode.com/problems/split-array-largest-sum/"]
+    ]},
+
+    { name: "Week 7: Linked List", problems: [
+        ["Day 25", "44", "Reverse Linked List", "Easy", "https://leetcode.com/problems/reverse-linked-list/"],
+        ["Day 25", "45", "Merge Two Sorted Lists", "Easy", "https://leetcode.com/problems/merge-two-sorted-lists/"],
+        ["Day 26", "46", "Linked List Cycle", "Easy", "https://leetcode.com/problems/linked-list-cycle/"],
+        ["Day 26", "47", "Reorder List", "Medium", "https://leetcode.com/problems/reorder-list/"],
+        ["Day 27", "48", "Remove Nth Node from End of List", "Medium", "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"],
+        ["Day 27", "49", "Add Two Numbers", "Medium", "https://leetcode.com/problems/add-two-numbers/"],
+        ["Day 28", "50", "Copy List with Random Pointer", "Medium", "https://leetcode.com/problems/copy-list-with-random-pointer/"]
+    ]},
+{ name: "Week 8: Trees", problems: [
+        ["Day 29", "51", "Invert Binary Tree", "Easy", "https://leetcode.com/problems/invert-binary-tree/"],
+        ["Day 29", "52", "Same Tree", "Easy", "https://leetcode.com/problems/same-tree/"],
+        ["Day 30", "53", "Subtree of Another Tree", "Easy", "https://leetcode.com/problems/subtree-of-another-tree/"],
+        ["Day 30", "54", "Lowest Common Ancestor of BST", "Medium", "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"],
+        ["Day 31", "55", "Binary Tree Level Order Traversal", "Medium", "https://leetcode.com/problems/binary-tree-level-order-traversal/"],
+        ["Day 31", "56", "Diameter of Binary Tree", "Easy", "https://leetcode.com/problems/diameter-of-binary-tree/"],
+        ["Day 32", "57", "Balanced Binary Tree", "Easy", "https://leetcode.com/problems/balanced-binary-tree/"]
+    ]},
+
+    { name: "Week 9: Graphs", problems: [
+        ["Day 33", "58", "Number of Islands", "Medium", "https://leetcode.com/problems/number-of-islands/"],
+        ["Day 33", "59", "Graph Valid Tree", "Medium", "https://leetcode.com/problems/graph-valid-tree/"],
+        ["Day 34", "60", "Course Schedule", "Medium", "https://leetcode.com/problems/course-schedule/"],
+        ["Day 34", "61", "Pacific Atlantic Water Flow", "Medium", "https://leetcode.com/problems/pacific-atlantic-water-flow/"],
+        ["Day 35", "62", "Word Ladder", "Hard", "https://leetcode.com/problems/word-ladder/"],
+        ["Day 35", "63", "Rotting Oranges", "Medium", "https://leetcode.com/problems/rotting-oranges/"],
+        ["Day 36", "64", "Alien Dictionary (Topological Sort)", "Hard", "https://www.lintcode.com/problem/892/"]
+    ]},
+
+    { name: "Week 10: Dynamic Programming", problems: [
+        ["Day 37", "65", "Climbing Stairs", "Easy", "https://leetcode.com/problems/climbing-stairs/"],
+        ["Day 37", "66", "House Robber", "Medium", "https://leetcode.com/problems/house-robber/"],
+        ["Day 38", "67", "Coin Change", "Medium", "https://leetcode.com/problems/coin-change/"],
+        ["Day 38", "68", "Longest Increasing Subsequence", "Medium", "https://leetcode.com/problems/longest-increasing-subsequence/"],
+        ["Day 39", "69", "Word Break", "Medium", "https://leetcode.com/problems/word-break/"],
+        ["Day 39", "70", "Edit Distance", "Hard", "https://leetcode.com/problems/edit-distance/"]
+    ]}
+];
+
+
+        function saveProgress() {
+            let progress = {};
+            document.querySelectorAll("input[type='checkbox']").forEach(cb => {
+                progress[cb.id] = cb.checked;
+            });
+            localStorage.setItem("progress", JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            let saved = JSON.parse(localStorage.getItem("progress")) || {};
+            document.querySelectorAll("input[type='checkbox']").forEach(cb => {
+                cb.checked = saved[cb.id] || false;
+            });
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let total = 0, completed = 0;
+            document.querySelectorAll(".section").forEach(section => {
+                let checkboxes = section.querySelectorAll("input[type='checkbox']");
+                total += checkboxes.length;
+                let done = Array.from(checkboxes).filter(cb => cb.checked).length;
+                section.querySelector(".progress-fill").style.width = `${(done / checkboxes.length) * 100}%`;
+                completed += done;
+            });
+            document.getElementById("overall-progress").style.width = `${(completed / total) * 100}%`;
+        }
+
+        function generateSections() {
+            let container = document.getElementById("sections");
+            weeks.forEach((week, idx) => {
+                let div = document.createElement("div");
+                div.classList.add("section");
+                div.innerHTML = `<h3>${week.name}</h3><div class="progress-bar"><div class="progress-fill"></div></div>`;
+                week.problems.forEach((p, pIdx) => {
+                    div.innerHTML += `<label><input type="checkbox" id="p${idx}-${pIdx}" onchange="saveProgress(); updateProgress();">
+                    <span>${p[0]} - Problem ${p[1]}: </span> 
+                    <a href="${p[4]}" target="_blank">${p[2]}</a> 
+                    <strong>(${p[3]})</strong></label>`;
+                });
+                container.appendChild(div);
+            });
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+        }
+
+        window.onload = () => {
+            generateSections();
+            loadProgress();
+            document.body.classList.toggle("dark-mode", localStorage.getItem("darkMode") === "true");
+        };
+    </script>
+
+</body>
+</html>
