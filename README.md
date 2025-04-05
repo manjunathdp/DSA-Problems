@@ -27,8 +27,8 @@ Open `index.html` in your browser.
 ### 📘 Week 1: Numerical & Arrays
 - [X] Day 1 - Problem 1: Sum of First N Natural Numbers (Easy)
 - [X] Day 1 - Problem 2: Reverse a Number (Easy)
-- [ ] Day 2 - Problem 3: GCD of Two Numbers (Easy)
-- [ ] Day 2 - Problem 4: Check Prime Number (Easy)
+- [X] Day 2 - Problem 3: GCD of Two Numbers (Easy)
+- [X] Day 2 - Problem 4: Check Prime Number (Easy)
 - [ ] Day 3 - Problem 5: Fibonacci Series (Easy)
 - [ ] Day 3 - Problem 6: Factorial of a Number (Easy)
 - [ ] Day 4 - Problem 7: Armstrong Number (Easy)
