@@ -29,8 +29,8 @@ Open `index.html` in your browser.
 - [X] Day 1 - Problem 2: Reverse a Number (Easy)
 - [X] Day 2 - Problem 3: GCD of Two Numbers (Easy)
 - [X] Day 2 - Problem 4: Check Prime Number (Easy)
-- [ ] Day 3 - Problem 5: Fibonacci Series (Easy)
-- [ ] Day 3 - Problem 6: Factorial of a Number (Easy)
+- [X] Day 3 - Problem 5: Fibonacci Series (Easy)
+- [X] Day 3 - Problem 6: Factorial of a Number (Easy)
 - [ ] Day 4 - Problem 7: Armstrong Number (Easy)
 - [ ] Day 4 - Problem 8: Palindrome Number (Easy)
 
