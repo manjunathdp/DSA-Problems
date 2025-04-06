@@ -2,7 +2,7 @@ package week01_Numerical;
 
 import java.util.Scanner;
 
-public class FactorialNumber {
+public class FactorialNumber06 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter 'n' value: ");
