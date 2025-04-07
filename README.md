@@ -31,8 +31,8 @@ Open `index.html` in your browser.
 - [X] Day 2 - Problem 4: Check Prime Number (Easy)
 - [X] Day 3 - Problem 5: Fibonacci Series (Easy)
 - [X] Day 3 - Problem 6: Factorial of a Number (Easy)
-- [ ] Day 4 - Problem 7: Armstrong Number (Easy)
-- [ ] Day 4 - Problem 8: Palindrome Number (Easy)
+- [X] Day 4 - Problem 7: Armstrong Number (Easy)
+- [X] Day 4 - Problem 8: Palindrome Number (Easy)
 
 
 ---
