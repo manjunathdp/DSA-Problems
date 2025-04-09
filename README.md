@@ -38,8 +38,8 @@ Open `index.html` in your browser.
 ---
 
 ### 📘 Week 2: Arrays & Hashing
-- [ ] Day 5 - Problem 9: Two Sum (Easy)
-- [ ] Day 5 - Problem 10: Contains Duplicate (Easy)
+- [X] Day 5 - Problem 9: Two Sum (Easy)
+- [X] Day 5 - Problem 10: Contains Duplicate (Easy)
 - [ ] Day 6 - Problem 11: Valid Anagram (Easy)
 - [ ] Day 6 - Problem 12: Group Anagrams (Medium)
 - [ ] Day 7 - Problem 13: Top K Frequent Elements (Medium)
