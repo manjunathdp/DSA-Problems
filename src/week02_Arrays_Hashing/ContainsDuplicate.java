@@ -10,17 +10,18 @@ public class ContainsDuplicate {
         int[] nums = new int[n];
         System.out.println("Enter Array value: ");
         for (int i = 0; i < n; i++) {
-            nums[i]=sc.nextInt();
+            nums[i] = sc.nextInt();
         }
         System.out.println(containsDuplicate(nums));
 
     }
+
     public static boolean containsDuplicate(int[] nums) {
         Set<Integer> set = new HashSet<>();
-        for(int ele : nums) {
-            if(set.isEmpty()) {
+        for (int ele : nums) {
+            if (set.isEmpty()) {
                 set.add(ele);
-            } else if(!set.contains(ele)) {
+            } else if (!set.contains(ele)) {
                 set.add(ele);
             } else {
                 return true;
