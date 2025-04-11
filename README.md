@@ -40,8 +40,8 @@ Open `index.html` in your browser.
 ### 📘 Week 2: Arrays & Hashing
 - [X] Day 5 - Problem 9: Two Sum (Easy)
 - [X] Day 5 - Problem 10: Contains Duplicate (Easy)
-- [ ] Day 6 - Problem 11: Valid Anagram (Easy)
-- [ ] Day 6 - Problem 12: Group Anagrams (Medium)
+- [X] Day 6 - Problem 11: Valid Anagram (Easy)
+- [X] Day 6 - Problem 12: Group Anagrams (Medium)
 - [ ] Day 7 - Problem 13: Top K Frequent Elements (Medium)
 - [ ] Day 7 - Problem 14: Product of Array Except Self (Medium)
 - [ ] Day 8 - Problem 15: Longest Consecutive Sequence (Hard)
