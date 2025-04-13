@@ -32,16 +32,18 @@ public class TopKFrequent {
     public static int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> hm = new HashMap<>();
 
-        // Count frequency of each element
         for (int num : nums) {
-            hm.put(num, hm.getOrDefault(num, 0) + 1);
+            if (hm.containsKey(num)) {
+                int value = hm.get(num);
+                hm.put(num, value + 1);
+            } else {
+                hm.put(num, 1);
+            }
         }
 
-        // Convert map entries to a list and sort by frequency
         List<Map.Entry<Integer, Integer>> entryList = new ArrayList<>(hm.entrySet());
         entryList.sort((a, b) -> b.getValue().compareTo(a.getValue()));
 
-        // Collect top k frequent elements
         int[] topK = new int[k];
         for (int i = 0; i < k; i++) {
             topK[i] = entryList.get(i).getKey();
