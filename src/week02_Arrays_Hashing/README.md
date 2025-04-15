@@ -380,3 +380,91 @@ public class TopKFrequent {
 }
 ```
 ---
+# Question 06 Product of Array Except Self - Without Division (Java)
+
+## 📝 Problem Statement
+
+Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all the elements of `nums` **except** `nums[i]`.
+
+- You must solve it in **O(n)** time.
+- **Do not** use division.
+
+---
+
+## 📘 Examples
+
+### Example 1:
+**Input:**  
+`nums = [1,2,3,4]`  
+**Output:**  
+`[24,12,8,6]`
+
+---
+
+### Example 2:
+**Input:**  
+`nums = [-1,1,0,-3,3]`  
+**Output:**  
+`[0,0,9,0,0]`
+
+---
+
+## 💡 Java Code (Prefix & Suffix Arrays)
+
+```java
+package week02_Arrays_Hashing;
+
+import java.util.Scanner;
+
+public class ProductExceptSelf {
+
+    public static int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+        int[] left = new int[n];
+        int[] right = new int[n];
+
+        // Initialize first element of left product array and last of right product array
+        left[0] = 1;
+        right[n - 1] = 1;
+
+        // Build left product array
+        for (int i = 1; i < n; i++) {
+            left[i] = left[i - 1] * nums[i - 1];
+        }
+
+        // Build right product array
+        for (int i = n - 2; i >= 0; i--) {
+            right[i] = right[i + 1] * nums[i + 1];
+        }
+
+        // Build the result by multiplying left and right products
+        for (int i = 0; i < n; i++) {
+            result[i] = left[i] * right[i];
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = scanner.nextInt();
+
+        int[] nums = new int[n];
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            nums[i] = scanner.nextInt();
+        }
+
+        int[] result = productExceptSelf(nums);
+
+        System.out.println("Product of array except self:");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+    }
+}
+```
+---
