@@ -26,6 +26,8 @@ public class TopKFrequent {
         // Print the result
         System.out.println("Top " + k + " frequent elements:");
         System.out.println(Arrays.toString(result));
+        System.out.println("Calling Test:");
+        //test(nums);
 
         scanner.close();
     }
@@ -51,4 +53,20 @@ public class TopKFrequent {
 
         return topK;
     }
+//    public static void test(int[] arr) {
+//        TreeMap<Integer,Integer> tm = new TreeMap<>();
+//        for (int n : arr) {
+//            if (tm.containsKey(n)) {
+//                int value = tm.get(n);
+//                value++;
+//                tm.put(n,value);
+//            } else {
+//                tm.put(n,1);
+//            }
+//        }
+//        System.out.println(tm);
+//        List<Map.Entry<Integer,Integer>> entryListTest = new ArrayList<>(tm.entrySet());
+//        entryListTest.sort((a, b) -> a.getValue().compareTo(b.getValue()));
+//        System.out.println(entryListTest);
+//    }
 }
