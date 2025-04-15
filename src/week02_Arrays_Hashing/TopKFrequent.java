@@ -26,7 +26,7 @@ public class TopKFrequent {
         // Print the result
         System.out.println("Top " + k + " frequent elements:");
         System.out.println(Arrays.toString(result));
-        System.out.println("Calling Test:");
+        //System.out.println("Calling Test:");
         //test(nums);
 
         scanner.close();
