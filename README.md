@@ -44,7 +44,7 @@ Open `index.html` in your browser.
 - [X] Day 6 - Problem 12: Group Anagrams (Medium)
 - [X] Day 7 - Problem 13: Top K Frequent Elements (Medium)
 - [X] Day 7 - Problem 14: Product of Array Except Self (Medium)
-- [ ] Day 8 - Problem 15: Longest Consecutive Sequence (Hard)
+- [X] Day 8 - Problem 15: Longest Consecutive Sequence (Hard)
 
 
 ---
