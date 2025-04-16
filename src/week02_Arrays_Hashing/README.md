@@ -468,3 +468,95 @@ public class ProductExceptSelf {
 }
 ```
 ---
+# Question 07 Longest Consecutive Sequence - Sorting & Set Approach (Java)
+
+## 📝 Problem Statement
+
+Given an unsorted array of integers `nums`, return the length of the longest consecutive elements sequence.
+
+- You must write an algorithm that runs in **O(n)** time.
+
+---
+
+## 📘 Examples
+
+### Example 1:
+**Input:**  
+`nums = [100,4,200,1,3,2]`  
+**Output:**  
+`4`  
+**Explanation:**  
+The longest consecutive elements sequence is `[1, 2, 3, 4]`. Therefore, its length is 4.
+
+---
+
+### Example 2:
+**Input:**  
+`nums = [0,3,7,2,5,8,4,6,0,1]`  
+**Output:**  
+`9`  
+**Explanation:**  
+The longest consecutive elements sequence is `[0, 1, 2, 3, 4, 5, 6, 7, 8]`. Therefore, its length is 9.
+
+---
+
+### Example 3:
+**Input:**  
+`nums = [1,0,1,2]`  
+**Output:**  
+`3`  
+**Explanation:**  
+The longest consecutive elements sequence is `[0, 1, 2]`. Therefore, its length is 3.
+
+---
+
+## 💡 Java Code (Sorting & Set Approach)
+
+```java
+import java.util.*;
+
+public class LongestConsecutiveSequence {
+
+    public static int longestConsecutive(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        Arrays.sort(nums);
+        TreeSet<Integer> seqList = new TreeSet<>();
+        int seq = 1;
+
+        // Traverse through the sorted array and find the longest sequence
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
+                continue; // skip duplicates
+            } else if (nums[i] + 1 == nums[i + 1]) {
+                seq++;
+            } else {
+                seqList.add(seq);
+                seq = 1;
+            }
+        }
+
+        // Add the last sequence
+        seqList.add(seq); 
+        return seqList.last(); // Return the length of the longest sequence
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = scanner.nextInt();
+
+        int[] nums = new int[n];
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            nums[i] = scanner.nextInt();
+        }
+
+        int result = longestConsecutive(nums);
+
+        System.out.println("Length of the longest consecutive sequence: " + result);
+    }
+}
+```
+---
