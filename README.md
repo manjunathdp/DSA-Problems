@@ -51,7 +51,7 @@ Open `index.html` in your browser.
 
 ### 📘 Week 3: Two Pointers
 - [X] Day 9 - Problem 16: Valid Palindrome (Easy)
-- [ ] Day 9 - Problem 17: Two Sum II (Easy)
+- [X] Day 9 - Problem 17: Two Sum II (Easy)
 - [ ] Day 10 - Problem 18: 3Sum (Medium)
 - [ ] Day 10 - Problem 19: Container With Most Water (Medium)
 - [ ] Day 11 - Problem 20: Trapping Rain Water (Hard)
