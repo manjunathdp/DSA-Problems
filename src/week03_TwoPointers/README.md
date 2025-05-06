@@ -264,3 +264,87 @@ public class ThreeSumSolver {
 }
 ```
 ---
+# Question 04 Problem: Container With Most Water
+
+## 📝 Problem Statement
+
+You are given an integer array `height` of length `n`. There are `n` vertical lines drawn such that the two endpoints of the `i-th` line are `(i, 0)` and `(i, height[i])`.
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+**Note:** You may not slant the container.
+
+---
+
+## 📘 Examples
+
+### Example 1:
+**Input:**  
+`height = [1,8,6,2,5,4,8,3,7]`  
+**Output:**  
+`49`  
+**Explanation:**  
+The lines at indices 1 and 8 form a container with height 7 and width 7 (8 - 1 = 7), so the area is 7 * 7 = 49.
+
+### Example 2:
+**Input:**  
+`height = [1,1]`  
+**Output:**  
+`1`  
+**Explanation:**  
+Only one possible container of height 1 and width 1, area = 1 * 1 = 1.
+
+---
+
+## 💡 Java Solution
+
+```java
+import java.util.Scanner;
+
+public class ContainerWithMostWater {
+
+    public static int maxArea(int[] height) {
+        int start = 0;
+        int end = height.length - 1;
+        int largestArea = 0;
+
+        while (end > start) {
+            int width = end - start;
+            int h;
+            if (height[start] < height[end]) {
+                h = height[start];
+                start++;
+            } else {
+                h = height[end];
+                end--;
+            }
+            int area = h * width;
+            if (area > largestArea) {
+                largestArea = area;
+            }
+        }
+        return largestArea;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of vertical lines: ");
+        int n = scanner.nextInt();
+        int[] height = new int[n];
+
+        System.out.println("Enter the heights of the lines:");
+        for (int i = 0; i < n; i++) {
+            height[i] = scanner.nextInt();
+        }
+
+        int result = maxArea(height);
+        System.out.println("Maximum area of water the container can hold: " + result);
+
+        scanner.close();
+    }
+}
+```
+---
