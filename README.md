@@ -53,7 +53,7 @@ Open `index.html` in your browser.
 - [X] Day 9 - Problem 16: Valid Palindrome (Easy)
 - [X] Day 9 - Problem 17: Two Sum II (Easy)
 - [X] Day 10 - Problem 18: 3Sum (Medium)
-- [ ] Day 10 - Problem 19: Container With Most Water (Medium)
+- [X] Day 10 - Problem 19: Container With Most Water (Medium)
 - [ ] Day 11 - Problem 20: Trapping Rain Water (Hard)
 - [ ] Day 11 - Problem 21: Remove Duplicates from Sorted Array (Easy)
 - [ ] Day 12 - Problem 22: Move Zeroes (Easy)
